@@ -21,12 +21,12 @@ npm install
 
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/kabamehmetali/COMP3133-FullStackII/tree/main/LabExercies/Lab01_101453763_COMP3133
    ```
 
 2. Navigate to the project folder:
    ```bash
-   cd <repository_folder>
+   cd LabExercies/Lab01_101453763_COMP3133
    ```
 
 3. Install dependencies:
@@ -61,38 +61,41 @@ Given the `input_countries.csv` file:
 | Canada          | Vancouver  | 631,486    |
 | United States   | Los Angeles| 3,979,576  |
 
-Output:
-- `canada.txt`:
-  ```json
-  [
-    {
-      "country": "Canada",
-      "city": "Toronto",
-      "population": "2,731,571"
-    },
-    {
-      "country": "Canada",
-      "city": "Vancouver",
-      "population": "631,486"
-    }
-  ]
-  ```
+### Output Files
+- **`canada.txt`**:
+```json
+[
+  {
+    "country": "Canada",
+    "city": "Toronto",
+    "population": "2,731,571"
+  },
+  {
+    "country": "Canada",
+    "city": "Vancouver",
+    "population": "631,486"
+  }
+]
+```
 
-- `usa.txt`:
-  ```json
-  [
-    {
-      "country": "United States",
-      "city": "New York",
-      "population": "8,336,817"
-    },
-    {
-      "country": "United States",
-      "city": "Los Angeles",
-      "population": "3,979,576"
-    }
-  ]
-  ```
+- **`usa.txt`**:
+```json
+[
+  {
+    "country": "United States",
+    "city": "New York",
+    "population": "8,336,817"
+  },
+  {
+    "country": "United States",
+    "city": "Los Angeles",
+    "population": "3,979,576"
+  }
+]
+```
+
+## Repository
+[COMP3133 FullStack II - Lab Exercises](https://github.com/kabamehmetali/COMP3133-FullStackII/tree/main/LabExercies/Lab01_101453763_COMP3133)
 
 ## Author
 Mehmet Ali Kaba
