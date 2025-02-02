@@ -31,7 +31,7 @@ This is a RESTful API for managing restaurant data, built using **Node.js, Expre
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/lab3_restaurant_database.git
+git clone https://github.com/kabamehmetali/COMP3133-FullStackII/tree/main/LabExercies/lab03_101453763_comp3133
 cd lab3_restaurant_database
 ```
 
@@ -138,7 +138,7 @@ You can import the full **Postman Collection** for easy API testing.
 
 ## GitHub Repository
 
-[GitHub Repository Link](https://github.com/yourusername/lab3_restaurant_database)
+[GitHub Repository Link](https://github.com/kabamehmetali/COMP3133-FullStackII/tree/main/LabExercies/lab03_101453763_comp3133)
 
 ---
 
