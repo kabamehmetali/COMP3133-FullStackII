@@ -38,7 +38,7 @@ cd lab3_restaurant_database
 ### 2. Install Dependencies
 
 ```bash
-npm install
+npm install express mongoose dotenv morgan
 ```
 
 ### 3. Configure Environment Variables
@@ -123,16 +123,6 @@ node server.js
 ### 8. **Get Delicatessen Restaurants (Excluding Brooklyn)**
 - **URL:** `GET /restaurants/Delicatessen`
 - **Response:** Returns only `name`, `cuisine`, and `city` fields.
-
----
-
-## Postman Collection
-
-You can import the full **Postman Collection** for easy API testing.
-
-1. Download the collection: [RestaurantAPI_Full.postman_collection.json](RestaurantAPI_Full.postman_collection.json)
-2. Open **Postman**
-3. Click **Import** and select the JSON file.
 
 ---
 
