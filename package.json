@@ -1,0 +1,20 @@
+{
+  "name": "w2025_fsii",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kabamehmetali/COMP3133-FullStackII.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kabamehmetali/COMP3133-FullStackII/issues"
+  },
+  "homepage": "https://github.com/kabamehmetali/COMP3133-FullStackII#readme",
+  "description": ""
+}
