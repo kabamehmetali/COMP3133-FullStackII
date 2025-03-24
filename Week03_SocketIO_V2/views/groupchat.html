@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Group Chat</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h1>Group Chat</h1>
+  <h3 id="socketId"></h3>
+  
+  <!-- Group selection -->
+  <label>
+    <input type="radio" name="group" value="news" /> News
+  </label><br>
+  <label>
+    <input type="radio" name="group" value="sports" /> Sports
+  </label><br>
+  
+  <!-- Buttons for group operations -->
+  <button onclick="joinGroup()">Join Group</button>
+  <button onclick="leaveGroup()">Leave Group</button>
+  <br /><br />
+  
+  <!-- Message input -->
+  <input type="text" id="message" name="message" placeholder="Enter message" />
+  <button onclick="sendGroupMessage()">Send Message</button>
+  
+  <h3>Group Chat History</h3>
+  <div id="container" name="container"></div>
+  
+  <script>
+    const ioClient = io();
+
+    // Display the socket ID once connected
+    ioClient.on('connect', () => {
+      document.getElementById('socketId').innerHTML = `Socket ID: ${ioClient.id}`;
+      console.log('Connected to server');
+    });
+
+    // Function to join a selected group
+    function joinGroup() {
+      const groupRadio = document.querySelector('input[name="group"]:checked');
+      if (!groupRadio) {
+        alert('Please select a group to join');
+        return;
+      }
+      const groupName = groupRadio.value;
+      ioClient.emit('join_group', groupName);
+      console.log('Joining group:', groupName);
+    }
+
+    // Function to leave a selected group
+    function leaveGroup() {
+      const groupRadio = document.querySelector('input[name="group"]:checked');
+      if (!groupRadio) {
+        alert('Please select a group to leave');
+        return;
+      }
+      const groupName = groupRadio.value;
+      ioClient.emit('leave_group', groupName);
+      console.log('Leaving group:', groupName);
+    }
+
+    // Function to send a message to the selected group
+    function sendGroupMessage() {
+      const groupRadio = document.querySelector('input[name="group"]:checked');
+      if (!groupRadio) {
+        alert('Please select a group');
+        return;
+      }
+      const groupName = groupRadio.value;
+      const textMessage = document.getElementById('message');
+      const message = textMessage.value;
+      if (message.trim() === '') {
+        alert('Please enter a message');
+        return;
+      }
+      const data = {
+        group: groupName,
+        message: message
+      };
+      ioClient.emit('group_message', data);
+      textMessage.value = '';
+    }
+
+    // Handler to display group messages when received from the server
+    ioClient.on('group_message', (data) => {
+      const container = document.getElementById('container');
+      const senderId = data.clientId;
+      const messageText = data.message;
+      const timestamp = new Date();
+      const msg = `<p><b>${senderId}</b> [${timestamp.toLocaleTimeString()}]: ${messageText}</p>`;
+      container.innerHTML += msg;
+      console.log('Group Message received: ', data);
+    });
+  </script>
+</body>
+</html>

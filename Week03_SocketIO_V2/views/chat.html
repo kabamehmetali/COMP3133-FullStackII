@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Client</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <h1>Node Js | Socket Chat Examples </h1>
+    <h3 id="uname">Username: </h3>
+    <a href="/group">Group Chat</a>
+    <br><br>
+    <input type="text" id="message" name="message" placeholder="Enter message">
+    <button onclick="sendMessage()">Send Message</button>
+    <h3>Chat History</h3>
+    <div id="container" name="container"></div>
+
+
+
+
+
+    <script>
+    //  const ioClient = io.of('/');
+       const ioClient = io('/');
+       ioClient.on('connect', () => {
+
+           console.log('Connected to server');
+        //    ioClient.emit('chat', 'Hello from client');
+            ioClient.send('Hello from client');
+           
+       });
+
+      
+        ioClient.on('chat_message', (data) => {
+            const container = document.getElementById('container');
+            const msg = document.createElement('div');
+            msg.innerHTML = `<p><b>${data.clientId}</b> ${data.message}</p> `;
+            container.innerHTML += msg.innerHTML;
+            const uname = document.getElementById('uname');
+            uname.innerHTML = `Username: ${ioClient.id}`;
+
+});
+
+
+        function sendMessage(){
+            const data = {
+            clientId: ioClient.id,
+            message: message.value,
+            datasent: Date.now()
+
+         }
+       ioClient.emit('chat_message', data);
+       }
+
+       
+
+    </script>
+    
+</body>
+</html>
